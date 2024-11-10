@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,211 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int                   @id @default(autoincrement())
+  username       String                @unique
+  email          String                @unique
+  password       String
+  createdAt      DateTime              @default(now()) @map("created_at")
+  updatedAt      DateTime              @updatedAt @map("updated_at")
+  birthDate      DateTime
+  firstName      String
+  lastName       String
+  createdBy      Event[]
+  dislikedMeals  UsersDislikedMeals[]
+  dislikedMovies UsersDislikedMovies[]
+  dislikedPlaces UsersDislikedPlaces[]
+  event          UserInEvent[]
+  likedMeals     UsersLikedMeals[]
+  likedMovies    UsersLikedMovies[]
+  likedPlaces    UsersLikedPlaces[]
+
+  @@map("users")
+}
+
+model Event {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(80)
+  plannedDate         DateTime
+  createdAt           DateTime              @default(now()) @map("created_at")
+  updatedAt           DateTime              @updatedAt @map("updated_at")
+  password            String                @db.VarChar(15)
+  userId              Int
+  event_decisions     EventDecisions[]
+  user                User                  @relation(fields: [userId], references: [id])
+  usersDislikedMeals  UsersDislikedMeals[]
+  usersDislikedMovies UsersDislikedMovies[]
+  usersDislikedPlaces UsersDislikedPlaces[]
+  users               UserInEvent[]
+  usersLikedMeals     UsersLikedMeals[]
+  usersLikedMovies    UsersLikedMovies[]
+  usersLikedPlaces    UsersLikedPlaces[]
+
+  @@map("events")
+}
+
+model UserInEvent {
+  userId    Int
+  eventId   Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  event     Event    @relation(fields: [eventId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("users_in_event")
+}
+
+model Movie {
+  id              Int                   @id @default(autoincrement())
+  title           String                @db.VarChar(80)
+  description     String?
+  duration        Int?
+  genre           String?               @db.VarChar(50)
+  createdAt       DateTime              @default(now()) @map("created_at")
+  updatedAt       DateTime              @updatedAt @map("updated_at")
+  urlImage        String?               @db.VarChar(255)
+  event_decisions EventDecisions[]
+  usersDisliked   UsersDislikedMovies[]
+  usersLiked      UsersLikedMovies[]
+
+  @@map("movies")
+}
+
+model Meal {
+  id              Int                  @id @default(autoincrement())
+  name            String               @db.VarChar(80)
+  description     String?
+  createdAt       DateTime             @default(now()) @map("created_at")
+  updatedAt       DateTime             @updatedAt @map("updated_at")
+  urlImage        String?              @db.VarChar(255)
+  event_decisions EventDecisions[]
+  usersdisiked    UsersDislikedMeals[]
+  usersLiked      UsersLikedMeals[]
+
+  @@map("meals")
+}
+
+model Place {
+  id              Int                   @id @default(autoincrement())
+  title           String                @db.VarChar(80)
+  location        String?
+  rating          Int?
+  createdAt       DateTime              @default(now()) @map("created_at")
+  updatedAt       DateTime              @updatedAt @map("updated_at")
+  urlImage        String?               @db.VarChar(255)
+  event_decisions EventDecisions[]
+  usersDisliked   UsersDislikedPlaces[]
+  usersLiked      UsersLikedPlaces[]
+
+  @@map("places")
+}
+
+model UsersLikedMovies {
+  movieId   Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  movie     Movie    @relation(fields: [movieId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([movieId, userId, eventId])
+  @@map("users_liked_movies")
+}
+
+model UsersLikedMeals {
+  mealId    Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  meal      Meal     @relation(fields: [mealId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([mealId, userId, eventId])
+  @@map("users_liked_meals")
+}
+
+model UsersLikedPlaces {
+  placeId   Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  place     Place    @relation(fields: [placeId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([placeId, userId, eventId])
+  @@map("users_liked_places")
+}
+
+model UsersDislikedMovies {
+  movieId   Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  movie     Movie    @relation(fields: [movieId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([movieId, userId, eventId])
+  @@map("users_disliked_movies")
+}
+
+model UsersDislikedMeals {
+  mealId    Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  meal      Meal     @relation(fields: [mealId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([mealId, userId, eventId])
+  @@map("users_disliked_meals")
+}
+
+model UsersDislikedPlaces {
+  placeId   Int
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  place     Place    @relation(fields: [placeId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([placeId, userId, eventId])
+  @@map("users_disliked_places")
+}
+
+model EventDecisions {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  movieId   Int?
+  mealId    Int?
+  placeId   Int?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  events    Event    @relation(fields: [eventId], references: [id])
+  meals     Meal?    @relation(fields: [mealId], references: [id])
+  movies    Movie?   @relation(fields: [movieId], references: [id])
+  places    Place?   @relation(fields: [placeId], references: [id])
+
+  @@map("event_decisions")
 }
