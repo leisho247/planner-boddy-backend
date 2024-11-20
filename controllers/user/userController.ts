@@ -1,7 +1,7 @@
-import httpStatus from "../helpers/httpStatus.js";
-import { encrypt, verified } from "../utils/bcrypt.js";
+import httpStatus from "../../helpers/httpStatus.js";
+import { encrypt, verified } from "../../utils/bcrypt.js";
 import { PrismaClient } from "@prisma/client";
-import { generateToken, verifyToken } from "../utils/jwt.service.js";
+import { generateToken, verifyToken } from "../../utils/jwt.service.js";
 
 // Instancia de PrismaClient para interactuar con la base de datos
 const prisma = new PrismaClient();

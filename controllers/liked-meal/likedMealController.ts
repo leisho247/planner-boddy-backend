@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import HTTP_STATUS from "../helpers/httpStatus.js";
+import HTTP_STATUS from "../../helpers/httpStatus.js";
 
 // Instancia de PrismaClient para interactuar con la base de datos
 const prisma = new PrismaClient();
