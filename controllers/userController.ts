@@ -1,6 +1,6 @@
 import httpStatus from "../helpers/httpStatus.js";
 import { encrypt, verified } from "../utils/bcrypt.js";
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { generateToken, verifyToken } from "../utils/jwt.service.js";
 
 // Instancia de PrismaClient para interactuar con la base de datos
