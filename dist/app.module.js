@@ -24,6 +24,7 @@ exports.AppModule = AppModule = __decorate([
                 isGlobal: true,
                 load: [database_config_1.default],
             }),
+            ,
             disliked_meal_module_1.DislikedMealModule,
             like_place_module_1.LikePlaceModule,
             like_movie_module_1.LikeMovieModule,

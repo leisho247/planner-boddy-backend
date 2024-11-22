@@ -13,7 +13,7 @@ import { LikeMovieModule } from './modules/like-movie/like-movie.module';
       isGlobal: true,
       load: [databaseConfig],
     }),
-    // AIModule,
+    ,
     DislikedMealModule,
     LikePlaceModule,
     LikeMovieModule,
