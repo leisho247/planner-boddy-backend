@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Configuration, OpenAIApi } from 'openai';
-import { PrismaService } from '../prisma/prisma.service';  // Importa el servicio de Prisma
+import { PrismaService } from 'src/prisma/prisma.service'; // Importa el servicio de Prisma
 
 @Injectable()
 export class AIService {
@@ -18,14 +18,26 @@ export class AIService {
     let dislikedItems = [];
 
     if (category === 'movies') {
-      likedItems = await this.prisma.usersLikedMovies.findMany({ where: { eventId } });
-      dislikedItems = await this.prisma.usersDislikedMovies.findMany({ where: { eventId } });
+      likedItems = await this.prisma.usersLikedMovies.findMany({
+        where: { eventId },
+      });
+      dislikedItems = await this.prisma.usersDislikedMovies.findMany({
+        where: { eventId },
+      });
     } else if (category === 'places') {
-      likedItems = await this.prisma.usersLikedPlaces.findMany({ where: { eventId } });
-      dislikedItems = await this.prisma.usersDislikedPlaces.findMany({ where: { eventId } });
+      likedItems = await this.prisma.usersLikedPlaces.findMany({
+        where: { eventId },
+      });
+      dislikedItems = await this.prisma.usersDislikedPlaces.findMany({
+        where: { eventId },
+      });
     } else if (category === 'meals') {
-      likedItems = await this.prisma.usersLikedMeals.findMany({ where: { eventId } });
-      dislikedItems = await this.prisma.usersDislikedMeals.findMany({ where: { eventId } });
+      likedItems = await this.prisma.usersLikedMeals.findMany({
+        where: { eventId },
+      });
+      dislikedItems = await this.prisma.usersDislikedMeals.findMany({
+        where: { eventId },
+      });
     }
 
     const likedNames = likedItems.map((item) => item.name).join(', ');
@@ -42,7 +54,10 @@ export class AIService {
 
       return gptResponse.data.choices[0].text.trim();
     } catch (error) {
-      throw new HttpException('Error generating recommendations', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(
+        'Error generating recommendations',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }

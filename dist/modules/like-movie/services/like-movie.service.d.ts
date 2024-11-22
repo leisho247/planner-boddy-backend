@@ -1,9 +1,10 @@
-import { CreateLikeMovieDto } from './dto/create-like-movie.dto';
-import { UpdateLikeMovieDto } from './dto/update-like-movie.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateLikeMovieDto } from '../dto/create-like-movie.dto';
 export declare class LikeMovieService {
-    create(createLikeMovieDto: CreateLikeMovieDto): string;
+    private readonly prisma;
+    constructor(prisma: PrismaService);
+    create(createLikeMovieDto: CreateLikeMovieDto): Promise<any>;
     findAll(): string;
     findOne(id: number): string;
-    update(id: number, updateLikeMovieDto: UpdateLikeMovieDto): string;
     remove(id: number): string;
 }

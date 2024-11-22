@@ -11,13 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LikeMovieController = void 0;
 const common_1 = require("@nestjs/common");
-const like_movie_service_1 = require("./like-movie.service");
+const like_movie_service_1 = require("../services/like-movie.service");
 const create_like_movie_dto_1 = require("../dto/create-like-movie.dto");
-const update_like_movie_dto_1 = require("../dto/update-like-movie.dto");
 let LikeMovieController = class LikeMovieController {
     constructor(likeMovieService) {
         this.likeMovieService = likeMovieService;
@@ -30,9 +28,6 @@ let LikeMovieController = class LikeMovieController {
     }
     findOne(id) {
         return this.likeMovieService.findOne(+id);
-    }
-    update(id, updateLikeMovieDto) {
-        return this.likeMovieService.update(+id, updateLikeMovieDto);
     }
     remove(id) {
         return this.likeMovieService.remove(+id);
@@ -60,14 +55,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], LikeMovieController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_like_movie_dto_1.UpdateLikeMovieDto]),
-    __metadata("design:returntype", void 0)
-], LikeMovieController.prototype, "update", null);
-__decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -76,6 +63,6 @@ __decorate([
 ], LikeMovieController.prototype, "remove", null);
 exports.LikeMovieController = LikeMovieController = __decorate([
     (0, common_1.Controller)('like-movie'),
-    __metadata("design:paramtypes", [typeof (_a = typeof like_movie_service_1.LikeMovieService !== "undefined" && like_movie_service_1.LikeMovieService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [like_movie_service_1.LikeMovieService])
 ], LikeMovieController);
 //# sourceMappingURL=like-movie.controller.js.map

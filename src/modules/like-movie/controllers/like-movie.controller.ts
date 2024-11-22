@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { LikeMovieService } from '../services/like-movie.service';
 import { CreateLikeMovieDto } from '../dto/create-like-movie.dto';
 //import { UpdateLikeMovieDto } from '../dto/update-like-movie.dto';
@@ -22,10 +22,10 @@ export class LikeMovieController {
     return this.likeMovieService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLikeMovieDto: UpdateLikeMovieDto) {
-    return this.likeMovieService.update(+id, updateLikeMovieDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateLikeMovieDto: UpdateLikeMovieDto) {
+  //   return this.likeMovieService.update(+id, updateLikeMovieDto);
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

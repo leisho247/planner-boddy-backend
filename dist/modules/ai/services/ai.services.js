@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AIService = void 0;
 const common_1 = require("@nestjs/common");
 const openai_1 = require("openai");
-const prisma_service_1 = require("../prisma/prisma.service");
+const prisma_service_1 = require("../../../prisma/prisma.service");
 let AIService = class AIService {
     constructor(prisma) {
         this.prisma = prisma;
@@ -26,16 +25,28 @@ let AIService = class AIService {
         let likedItems = [];
         let dislikedItems = [];
         if (category === 'movies') {
-            likedItems = await this.prisma.usersLikedMovies.findMany({ where: { eventId } });
-            dislikedItems = await this.prisma.usersDislikedMovies.findMany({ where: { eventId } });
+            likedItems = await this.prisma.usersLikedMovies.findMany({
+                where: { eventId },
+            });
+            dislikedItems = await this.prisma.usersDislikedMovies.findMany({
+                where: { eventId },
+            });
         }
         else if (category === 'places') {
-            likedItems = await this.prisma.usersLikedPlaces.findMany({ where: { eventId } });
-            dislikedItems = await this.prisma.usersDislikedPlaces.findMany({ where: { eventId } });
+            likedItems = await this.prisma.usersLikedPlaces.findMany({
+                where: { eventId },
+            });
+            dislikedItems = await this.prisma.usersDislikedPlaces.findMany({
+                where: { eventId },
+            });
         }
         else if (category === 'meals') {
-            likedItems = await this.prisma.usersLikedMeals.findMany({ where: { eventId } });
-            dislikedItems = await this.prisma.usersDislikedMeals.findMany({ where: { eventId } });
+            likedItems = await this.prisma.usersLikedMeals.findMany({
+                where: { eventId },
+            });
+            dislikedItems = await this.prisma.usersDislikedMeals.findMany({
+                where: { eventId },
+            });
         }
         const likedNames = likedItems.map((item) => item.name).join(', ');
         const dislikedNames = dislikedItems.map((item) => item.name).join(', ');
@@ -56,6 +67,6 @@ let AIService = class AIService {
 exports.AIService = AIService;
 exports.AIService = AIService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], AIService);
 //# sourceMappingURL=ai.services.js.map

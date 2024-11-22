@@ -8,20 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const disliked_module_1 = require("./disliked-meal/disliked/disliked.module");
-const disliked_meal_controller_1 = require("./disliked-meal/disliked-meal.controller");
-const disliked_meal_module_1 = require("./disliked-meal/disliked-meal.module");
+const config_1 = require("@nestjs/config");
+const prisma_service_1 = require("./prisma/prisma.service");
+const database_config_1 = require("./config/database.config");
+const disliked_meal_module_1 = require("./modules/disliked-meal/disliked-meal.module");
 const like_place_module_1 = require("./modules/like-place/like-place.module");
 const like_movie_module_1 = require("./modules/like-movie/like-movie.module");
-const like_place_service_1 = require("./modules/like-place/services/like-place.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [AIModule, disliked_module_1.DislikedModule, disliked_meal_module_1.DislikedMealModule, like_place_module_1.LikePlaceModule, like_movie_module_1.LikeMovieModule],
-        controllers: [disliked_meal_controller_1.DislikedMealController],
-        providers: [like_place_service_1.LikePlaceService],
+        imports: [
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+                load: [database_config_1.default],
+            }),
+            disliked_meal_module_1.DislikedMealModule,
+            like_place_module_1.LikePlaceModule,
+            like_movie_module_1.LikeMovieModule,
+        ],
+        providers: [prisma_service_1.PrismaService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

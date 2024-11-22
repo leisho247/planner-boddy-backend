@@ -10,7 +10,7 @@ exports.AIModule = void 0;
 const common_1 = require("@nestjs/common");
 const ai_controller_1 = require("./controllers/ai.controller");
 const ai_services_1 = require("./services/ai.services");
-const prisma_service_1 = require("../prisma/prisma.service");
+const prisma_service_1 = require("../../prisma/prisma.service");
 let AIModule = class AIModule {
 };
 exports.AIModule = AIModule;

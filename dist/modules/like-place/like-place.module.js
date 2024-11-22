@@ -10,13 +10,14 @@ exports.LikePlaceModule = void 0;
 const common_1 = require("@nestjs/common");
 const like_place_service_1 = require("./services/like-place.service");
 const like_place_controller_1 = require("./controllers/like-place.controller");
+const prisma_service_1 = require("../../prisma/prisma.service");
 let LikePlaceModule = class LikePlaceModule {
 };
 exports.LikePlaceModule = LikePlaceModule;
 exports.LikePlaceModule = LikePlaceModule = __decorate([
     (0, common_1.Module)({
         controllers: [like_place_controller_1.LikePlaceController],
-        providers: [like_place_service_1.LikePlaceService],
+        providers: [like_place_service_1.LikePlaceService, prisma_service_1.PrismaService],
     })
 ], LikePlaceModule);
 //# sourceMappingURL=like-place.module.js.map

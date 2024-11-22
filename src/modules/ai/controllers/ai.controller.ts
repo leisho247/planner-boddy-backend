@@ -10,7 +10,10 @@ export class AIController {
     @Param('eventId') eventId: string,
     @Body('category') category: string,
   ) {
-    const recommendations = await this.aiService.getRecommendations(eventId, category);
+    const recommendations = await this.aiService.getRecommendations(
+      eventId,
+      category,
+    );
     return { recommendations };
   }
 }

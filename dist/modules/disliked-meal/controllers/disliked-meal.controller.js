@@ -16,7 +16,6 @@ exports.DislikedMealController = void 0;
 const common_1 = require("@nestjs/common");
 const disliked_meal_service_1 = require("../services/disliked-meal.service");
 const create_disliked_meal_dto_1 = require("../dto/create-disliked-meal.dto");
-const update_disliked_meal_dto_1 = require("../dto/update-disliked-meal.dto");
 let DislikedMealController = class DislikedMealController {
     constructor(dislikedMealService) {
         this.dislikedMealService = dislikedMealService;
@@ -29,9 +28,6 @@ let DislikedMealController = class DislikedMealController {
     }
     findOne(id) {
         return this.dislikedMealService.findOne(+id);
-    }
-    update(id, updateDislikedMealDto) {
-        return this.dislikedMealService.update(+id, updateDislikedMealDto);
     }
     remove(id) {
         return this.dislikedMealService.remove(+id);
@@ -58,14 +54,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], DislikedMealController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_disliked_meal_dto_1.UpdateDislikedMealDto]),
-    __metadata("design:returntype", void 0)
-], DislikedMealController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

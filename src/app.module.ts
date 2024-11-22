@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { PrismaService } from './common/prisma/prisma.service';
+import { PrismaService } from './prisma/prisma.service';
 import databaseConfig from './config/database.config';
 
 import { DislikedMealModule } from './modules/disliked-meal/disliked-meal.module';

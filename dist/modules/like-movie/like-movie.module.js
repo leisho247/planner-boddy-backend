@@ -8,15 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LikeMovieModule = void 0;
 const common_1 = require("@nestjs/common");
-const like_movie_service_1 = require("./like-movie.service");
+const like_movie_service_1 = require("../like-movie/services/like-movie.service");
 const like_movie_controller_1 = require("./controllers/like-movie.controller");
+const prisma_service_1 = require("../../prisma/prisma.service");
 let LikeMovieModule = class LikeMovieModule {
 };
 exports.LikeMovieModule = LikeMovieModule;
 exports.LikeMovieModule = LikeMovieModule = __decorate([
     (0, common_1.Module)({
         controllers: [like_movie_controller_1.LikeMovieController],
-        providers: [like_movie_service_1.LikeMovieService],
+        providers: [like_movie_service_1.LikeMovieService, prisma_service_1.PrismaService],
     })
 ], LikeMovieModule);
 //# sourceMappingURL=like-movie.module.js.map
