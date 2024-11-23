@@ -6,23 +6,7 @@ export declare class LikedMealController {
         itemId: number;
         userId: number;
         eventId: number;
-    }): Promise<{
-        id: number;
-        userId: number;
-        createdAt: Date;
-        updatedAt: Date;
-        eventId: number;
-        mealId: number;
-    }>;
-    getLikedMeals(userId: string, eventId: string): Promise<{
-        userId: number;
-        eventId: number;
-        mealId: number;
-    }[]>;
-    getMostLikedMeals(eventId: string): Promise<{
-        mealId: number;
-        title: string;
-        urlImage: string;
-        likes: number;
-    }[]>;
+    }): Promise<any>;
+    getLikedMeals(userId: string, eventId: string): Promise<any>;
+    getMostLikedMeals(eventId: string): Promise<any>;
 }

@@ -17,7 +17,7 @@ let LikeMovieService = class LikeMovieService {
         this.prisma = prisma;
     }
     async create(createLikeMovieDto) {
-        return this.prisma.likeMovie.create({
+        return this.prisma.usersLikedMovies.create({
             data: createLikeMovieDto,
         });
     }

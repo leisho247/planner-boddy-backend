@@ -8,7 +8,8 @@ import { LikedMealModule } from './modules/liked-meal/liked-meal.module';
 import { MovieModule } from './modules/movies/movie.module';
 import { PlacesModule } from './modules/places/places.module';
 import { UsersInEventModule } from './modules/users-in-event/users-in-event.module';
-import PrismaService from './prisma/prisma.service';
+import PrismaService from '../prisma/prisma.service';
+import { DislikedMovieModule } from './modules/disliked-movie/disliked-movie.module';
 
 
 @Module({
@@ -17,14 +18,14 @@ import PrismaService from './prisma/prisma.service';
       isGlobal: true,
       load: [databaseConfig],
     }),
-    ,
     DislikedMealModule,
     LikePlaceModule,
     LikeMovieModule,
     LikedMealModule,
     MovieModule,
     PlacesModule,
-    UsersInEventModule
+    UsersInEventModule,
+    DislikedMovieModule
   ],
   providers: [PrismaService]
 })

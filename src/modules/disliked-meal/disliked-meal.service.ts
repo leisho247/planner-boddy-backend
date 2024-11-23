@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDislikedMealDto } from 'src/modules/disliked-meal/dto/create-disliked-meal.dto';
-import PrismaService from 'src/prisma/prisma.service';
+import PrismaService from 'prisma/prisma.service';
 
 @Injectable()
 export class DislikedMealService {
   constructor(private readonly prisma: PrismaService) {}
 
+  
   async create(createDislikedMealDto: CreateDislikedMealDto) {
-    return this.prisma.usersDislikedMeals.create({
-      data: createDislikedMealDto as any,
+    return this.prisma.likedMeal.create({
+      data: createDislikedMealDto,
     });
   }
 

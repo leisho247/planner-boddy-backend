@@ -18,6 +18,7 @@ const movie_module_1 = require("./modules/movies/movie.module");
 const places_module_1 = require("./modules/places/places.module");
 const users_in_event_module_1 = require("./modules/users-in-event/users-in-event.module");
 const prisma_service_1 = require("./prisma/prisma.service");
+const disliked_movie_module_1 = require("./modules/disliked-movie/disliked-movie.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,14 +29,14 @@ exports.AppModule = AppModule = __decorate([
                 isGlobal: true,
                 load: [database_config_1.default],
             }),
-            ,
             disliked_meal_module_1.DislikedMealModule,
             like_place_module_1.LikePlaceModule,
             like_movie_module_1.LikeMovieModule,
             liked_meal_module_1.LikedMealModule,
             movie_module_1.MovieModule,
             places_module_1.PlacesModule,
-            users_in_event_module_1.UsersInEventModule
+            users_in_event_module_1.UsersInEventModule,
+            disliked_movie_module_1.DislikedMovieModule
         ],
         providers: [prisma_service_1.default]
     })

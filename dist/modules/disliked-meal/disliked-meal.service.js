@@ -17,7 +17,7 @@ let DislikedMealService = class DislikedMealService {
         this.prisma = prisma;
     }
     async create(createDislikedMealDto) {
-        return this.prisma.LikedMeal.create({
+        return this.prisma.usersDislikedMeals.create({
             data: createDislikedMealDto,
         });
     }

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import PrismaService from 'src/prisma/prisma.service';
+import PrismaService from 'prisma/prisma.service';
 import { LikePlaceController } from './like-place.controller';
 import { LikePlaceService } from './like-place.service';
 

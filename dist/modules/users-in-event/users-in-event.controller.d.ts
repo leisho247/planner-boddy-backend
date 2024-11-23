@@ -6,29 +6,11 @@ export declare class UsersInEventController {
     getUsersInEvent(eventId: number): Promise<{
         statusCode: HttpStatus;
         message: string;
-        data: {
-            id: number;
-            createdAt: Date;
-            updatedAt: Date;
-            username: string;
-            email: string;
-            password: string;
-            birthDate: Date;
-            firstName: string;
-            lastName: string;
-        }[];
+        data: any;
     }>;
     getEventsForUser(userId: number): Promise<{
         statusCode: HttpStatus;
         message: string;
-        data: {
-            id: number;
-            userId: number;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-            password: string;
-            plannedDate: Date;
-        }[];
+        data: any;
     }>;
 }

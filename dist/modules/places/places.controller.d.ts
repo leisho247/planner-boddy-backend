@@ -6,10 +6,6 @@ export declare class PlacesController {
     getPlaces(): Promise<{
         statusCode: HttpStatus;
         message: string;
-        data: {
-            id: number;
-            urlImage: string;
-            title: string;
-        }[];
+        data: any;
     }>;
 }
