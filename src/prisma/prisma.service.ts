@@ -3,10 +3,15 @@ import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
+<<<<<<< HEAD
 export class PrismaService
   extends PrismaClient
   implements OnModuleInit, OnModuleDestroy
 {
+=======
+export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+
+>>>>>>> features/usersInEvent
   constructor() {
     super({
       datasources: {
@@ -16,7 +21,10 @@ export class PrismaService
       },
     });
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> features/usersInEvent
   async onModuleInit() {
     await this.$connect();
   }
