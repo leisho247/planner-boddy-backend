@@ -8,7 +8,7 @@ export class LikedMealService {
 
   async markAsLiked(mealId: number, userId: number, eventId: number) {
     try {
-      const likedMeal = await this.prisma.usersLikedMeals.create({
+      const likedMeal = await this.prisma.LikedMeal.create({
         data: {
           mealId,
           userId,
