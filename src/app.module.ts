@@ -7,6 +7,7 @@ import { LikePlaceModule } from './modules/like-place/like-place.module';
 import { LikeMovieModule } from './modules/like-movie/like-movie.module';
 import { LikedMealModule } from './modules/liked-meal/liked-meal.module';
 import { MovieModule } from './modules/movies/movie.module';
+import { PlacesModule } from './modules/places/places.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { MovieModule } from './modules/movies/movie.module';
     LikePlaceModule,
     LikeMovieModule,
     LikedMealModule,
-    MovieModule
+    MovieModule,
+    PlacesModule
   ],
   providers: [PrismaService]
 })
