@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { PrismaService } from './prisma/prisma.service';
 import databaseConfig from './config/database.config';
 import { DislikedMealModule } from './modules/disliked-meal/disliked-meal.module';
 import { LikePlaceModule } from './modules/like-place/like-place.module';
@@ -9,6 +8,7 @@ import { LikedMealModule } from './modules/liked-meal/liked-meal.module';
 import { MovieModule } from './modules/movies/movie.module';
 import { PlacesModule } from './modules/places/places.module';
 import { UsersInEventModule } from './modules/users-in-event/users-in-event.module';
+import PrismaService from './prisma/prisma.service';
 
 
 @Module({
