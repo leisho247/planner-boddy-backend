@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import  PrismaService  from 'prisma/prisma.service';
 import { CreateEventDto } from './dto/create-event.dto';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class EventService {
 
   async createEvent(createEventDto: CreateEventDto) {
     return this.prisma.event.create({
-      data: createEventDto,
+      data: createEventDto as any,
     });
   }
 

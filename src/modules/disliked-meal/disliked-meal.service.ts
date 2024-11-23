@@ -8,8 +8,8 @@ export class DislikedMealService {
 
   
   async create(createDislikedMealDto: CreateDislikedMealDto) {
-    return this.prisma.likedMeal.create({
-      data: createDislikedMealDto,
+    return this.prisma.usersDislikedMeals.create({
+      data: createDislikedMealDto as any,
     });
   }
 
