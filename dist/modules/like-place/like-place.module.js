@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LikePlaceModule = void 0;
 const common_1 = require("@nestjs/common");
-const like_place_service_1 = require("./services/like-place.service");
-const like_place_controller_1 = require("./controllers/like-place.controller");
 const prisma_service_1 = require("../../prisma/prisma.service");
+const like_place_controller_1 = require("./like-place.controller");
+const like_place_service_1 = require("./like-place.service");
 let LikePlaceModule = class LikePlaceModule {
 };
 exports.LikePlaceModule = LikePlaceModule;
 exports.LikePlaceModule = LikePlaceModule = __decorate([
     (0, common_1.Module)({
         controllers: [like_place_controller_1.LikePlaceController],
-        providers: [like_place_service_1.LikePlaceService, prisma_service_1.PrismaService],
+        providers: [like_place_service_1.LikePlaceService, prisma_service_1.default],
     })
 ], LikePlaceModule);
 //# sourceMappingURL=like-place.module.js.map

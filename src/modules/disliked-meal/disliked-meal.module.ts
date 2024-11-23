@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
-import { DislikedMealService } from './services/disliked-meal.service';
-import { DislikedMealController } from './controllers/disliked-meal.controller';
-import { PrismaService } from '../../prisma/prisma.service';
+import PrismaService from 'src/prisma/prisma.service';
+import { DislikedMealController } from './disliked-meal.controller';
+import { DislikedMealService } from './disliked-meal.service';
+
+
 
 @Module({
   controllers: [DislikedMealController],
   providers: [DislikedMealService, PrismaService],
 })
 export class DislikedMealModule {}
+
+

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// src/config/database.config.ts
-=======
->>>>>>> features/usersInEvent
 import { registerAs } from '@nestjs/config';
 
 export default registerAs('database', () => ({
@@ -9,8 +5,4 @@ export default registerAs('database', () => ({
   ssl: {
     rejectUnauthorized: false,
   },
-<<<<<<< HEAD
 }));
-=======
-}));
->>>>>>> features/usersInEvent
