@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'prisma/prisma.service';
 import { CreateLikePlaceDto } from '../dto/create-like-place.dto';
 //import { UpdateLikePlaceDto } from '../dto/update-like-place.dto';
 
