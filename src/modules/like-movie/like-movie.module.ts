@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { LikeMovieService } from '../like-movie/services/like-movie.service';
-import { LikeMovieController } from './controllers/like-movie.controller';
-import { PrismaService } from '../../common/prisma/prisma.service';
+import PrismaService from 'prisma/prisma.service';
+import { LikeMovieController } from './like-movie.controller';
+import { LikeMovieService } from './like-movie.service';
 
 @Module({
   controllers: [LikeMovieController],
