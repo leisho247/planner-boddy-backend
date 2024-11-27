@@ -8,7 +8,8 @@ export class DecisionController {
 
   @Post('create')
   async createDecision(@Body() createDecisionDto: CreateDecisionDto) {
-    const decision = await this.decisionService.createDecision(createDecisionDto);
+    const decision =
+      await this.decisionService.createDecision(createDecisionDto);
     return {
       statusCode: HttpStatus.CREATED,
       message: 'Decision created successfully.',

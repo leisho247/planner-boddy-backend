@@ -14,9 +14,8 @@ import { MealModule } from './modules/meal/meal.module';
 import { UserModule } from './modules/user/user.module';
 import { DislikedPlaceModule } from './modules/disliked-place/disliked-place.module';
 import { EventModule } from './modules/event/event.module';
-import { MealService } from './meal/meal.service';
 import { MealController } from './meal/meal.controller';
-import { ChatModule } from './chat/chat.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,9 +34,8 @@ import { ChatModule } from './chat/chat.module';
     UserModule,
     DislikedPlaceModule,
     EventModule,
-    ChatModule,
   ],
-  providers: [PrismaService, MealService],
+  providers: [PrismaService],
   controllers: [MealController],
 })
 export class AppModule {}
