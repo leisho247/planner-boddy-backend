@@ -1,28 +1,25 @@
-import { Controller, Post, Body, Get, Param, HttpStatus } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Body } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/common/guards/jwt.guard';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('create')
-  async createUser(@Body() createUserDto: CreateUserDto) {
-    const user = await this.userService.createUser(createUserDto);
-    return {
-      statusCode: HttpStatus.CREATED,
-      message: 'User created successfully.',
-      data: user,
-    };
+  @Post('register')
+  async register(@Body() registerData: any) {
+    return this.userService.register(registerData);
   }
 
-  @Get(':id')
-  async getUser(@Param('id') id: string) {
-    const user = await this.userService.getUser(+id);
-    return {
-      statusCode: HttpStatus.OK,
-      message: 'User retrieved successfully.',
-      data: user,
-    };
+  @Post('login')
+  async login(@Body() loginData: any) {
+    return this.userService.login(loginData);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  async logout(@Request() req: any) {
+    const user = req.user;
+    return this.userService.logout(user);
   }
 }
